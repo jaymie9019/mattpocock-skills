@@ -1,13 +1,15 @@
 Skills are organized into bucket folders under `skills/`:
 
 - `engineering/` — daily code work
-- `productivity/` — daily non-code workflow tools
+- `productivity/` — daily non-code workflow tools (shipped as the `productive` plugin)
 - `misc/` — kept around but rarely used
-- `personal/` — tied to my own setup, not promoted
+- `personal/` — tied to my own setup
 - `in-progress/` — drafts not yet ready to ship
 - `deprecated/` — no longer used
 
-Every skill in `engineering/`, `productivity/`, or `misc/` must have a reference in the top-level `README.md` and an entry in `.claude-plugin/plugin.json`. Skills in `personal/`, `in-progress/`, and `deprecated/` must not appear in either.
+This repo is a **Claude Code plugin marketplace**. The root `.claude-plugin/marketplace.json` lists one plugin per shipped bucket — `engineering`, `productive`, `misc`, `personal` — each pointing at its bucket via a relative `source`. `in-progress/` and `deprecated/` are **not** packaged as plugins and must not appear in `marketplace.json`.
+
+Each shipped bucket has its own `.claude-plugin/plugin.json` (e.g. `skills/engineering/.claude-plugin/plugin.json`) whose `skills` array lists each skill as a path relative to the bucket (e.g. `./tdd`). Every skill in `engineering/`, `productivity/`, or `misc/` must have a reference in the top-level `README.md` and an entry in its bucket's `plugin.json`. Skills in `in-progress/` and `deprecated/` must not appear in either. When you add a skill to a shipped bucket, update both that bucket's `plugin.json` and the relevant `README.md`s.
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 

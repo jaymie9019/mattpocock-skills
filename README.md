@@ -24,6 +24,8 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 ## Quickstart (30-second setup)
 
+### Option A — skills.sh installer
+
 1. Run the skills.sh installer:
 
 ```bash
@@ -38,6 +40,23 @@ npx skills@latest add mattpocock/skills
    - Ask you where you want to save any docs we create
 
 4. Bam - you're ready to go.
+
+### Option B — Claude Code plugin marketplace
+
+This repo is also a Claude Code plugin marketplace. Each bucket is a separately installable plugin, so you can grab just the category you want.
+
+```bash
+# Add the marketplace once
+claude plugin marketplace add mattpocock/skills
+
+# Then install whichever buckets you want
+claude plugin install engineering@mattpocock-skills
+claude plugin install productive@mattpocock-skills
+claude plugin install misc@mattpocock-skills
+claude plugin install personal@mattpocock-skills
+```
+
+Available plugins: `engineering`, `productive`, `misc`, `personal`. After installing `engineering`, run `/setup-matt-pocock-skills` once per repo as described above.
 
 ## Why These Skills Exist
 

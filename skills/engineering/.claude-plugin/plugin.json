@@ -1,0 +1,27 @@
+{
+  "name": "engineering",
+  "displayName": "Engineering",
+  "version": "1.0.0",
+  "description": "Matt Pocock's daily skills for real engineering — grilling, domain modeling, issues, TDD, diagnosis, prototyping.",
+  "author": {
+    "name": "Matt Pocock"
+  },
+  "homepage": "https://github.com/mattpocock/skills",
+  "repository": "https://github.com/mattpocock/skills",
+  "license": "MIT",
+  "keywords": ["engineering", "tdd", "issues", "domain-modeling", "diagnosis"],
+  "skills": [
+    "./ask-matt",
+    "./grill-with-docs",
+    "./triage",
+    "./improve-codebase-architecture",
+    "./setup-matt-pocock-skills",
+    "./to-issues",
+    "./to-prd",
+    "./prototype",
+    "./diagnosing-bugs",
+    "./tdd",
+    "./domain-modeling",
+    "./codebase-design"
+  ]
+}
