@@ -5,7 +5,7 @@
     "name": "Matt Pocock"
   },
   "description": "Matt Pocock's agent skills for real engineering, organised into installable plugins.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "plugins": [
     {
       "name": "engineering",
@@ -43,7 +43,7 @@
       "source": "./skills/productivity",
       "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing great skills.",
       "category": "productive",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": { "name": "Matt Pocock" },
       "keywords": ["productivity", "workflow", "skills"]
     }
