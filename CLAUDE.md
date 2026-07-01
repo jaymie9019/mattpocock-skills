@@ -16,7 +16,7 @@ The same repo is **also an OpenAI Codex plugin marketplace**, sharing the exact 
 - Root catalog `.agents/plugins/marketplace.json` lists the same four plugins, each with a `local` source pointing at its bucket (e.g. `./skills/engineering`).
 - Each shipped bucket has its own `.codex-plugin/plugin.json` alongside the `.claude-plugin/plugin.json`.
 
-Codex's `plugin.json` uses `"skills": "./"` — a **directory scan** of the bucket, not a curated list. So a Codex plugin ships *every* `<skill>/SKILL.md` in its bucket, including skills not curated into the Claude `plugin.json`. (Currently only `engineering` diverges: Codex ships all 14 bucket skills; Claude ships the curated 12, omitting `implement` and `resolving-merge-conflicts`.) When you add a skill to a shipped bucket, no Codex edit is needed for the bucket itself; only touch `.codex-plugin/plugin.json` / `.agents/plugins/marketplace.json` when adding a whole new plugin or bumping a version.
+Codex's `plugin.json` uses `"skills": "./"` — a **directory scan** of the bucket, not a curated list — so a Codex plugin ships *every* `<skill>/SKILL.md` in its bucket. To keep the two channels in parity, the Claude `plugin.json` for each bucket must list **every** skill in that bucket (that is why `engineering` includes `implement` and `resolving-merge-conflicts`). When you add a skill to a shipped bucket, add it to that bucket's Claude `plugin.json` and the `README.md`s; the Codex side needs no per-skill edit (the scan picks it up). Only touch `.codex-plugin/plugin.json` / `.agents/plugins/marketplace.json` when adding a whole new plugin or bumping a version.
 
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 
