@@ -11,6 +11,13 @@ This repo is a **Claude Code plugin marketplace**. The root `.claude-plugin/mark
 
 Each shipped bucket has its own `.claude-plugin/plugin.json` (e.g. `skills/engineering/.claude-plugin/plugin.json`) whose `skills` array lists each skill as a path relative to the bucket (e.g. `./tdd`). Every skill in `engineering/`, `productivity/`, or `misc/` must have a reference in the top-level `README.md` and an entry in its bucket's `plugin.json`. Skills in `in-progress/` and `deprecated/` must not appear in either. When you add a skill to a shipped bucket, update both that bucket's `plugin.json` and the relevant `README.md`s.
 
+The same repo is **also an OpenAI Codex plugin marketplace**, sharing the exact same `SKILL.md` files (no duplication). The Codex layer is a parallel set of manifests:
+
+- Root catalog `.agents/plugins/marketplace.json` lists the same four plugins, each with a `local` source pointing at its bucket (e.g. `./skills/engineering`).
+- Each shipped bucket has its own `.codex-plugin/plugin.json` alongside the `.claude-plugin/plugin.json`.
+
+Codex's `plugin.json` uses `"skills": "./"` — a **directory scan** of the bucket, not a curated list. So a Codex plugin ships *every* `<skill>/SKILL.md` in its bucket, including skills not curated into the Claude `plugin.json`. (Currently only `engineering` diverges: Codex ships all 14 bucket skills; Claude ships the curated 12, omitting `implement` and `resolving-merge-conflicts`.) When you add a skill to a shipped bucket, no Codex edit is needed for the bucket itself; only touch `.codex-plugin/plugin.json` / `.agents/plugins/marketplace.json` when adding a whole new plugin or bumping a version.
+
 Each skill entry in the top-level `README.md` must link the skill name to its `SKILL.md`.
 
 Each bucket folder has a `README.md` that lists every skill in the bucket with a one-line description, with the skill name linked to its `SKILL.md`. Bucket `README.md`s and the top-level `README.md` group entries into **User-invoked** and **Model-invoked**.

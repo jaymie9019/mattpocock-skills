@@ -1,0 +1,15 @@
+{
+  "name": "misc",
+  "version": "1.0.0",
+  "description": "Tools kept around but rarely used — git guardrails, shoehorn migration, exercise scaffolding, pre-commit setup.",
+  "author": {
+    "name": "Matt Pocock",
+    "url": "https://github.com/mattpocock/skills"
+  },
+  "skills": "./",
+  "interface": {
+    "displayName": "Misc",
+    "shortDescription": "Tools kept around but rarely used.",
+    "category": "Utilities"
+  }
+}

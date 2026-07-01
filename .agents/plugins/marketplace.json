@@ -1,0 +1,36 @@
+{
+  "name": "mattpocock-skills",
+  "interface": {
+    "displayName": "Matt Pocock Skills"
+  },
+  "plugins": [
+    {
+      "name": "engineering",
+      "source": { "source": "local", "path": "./skills/engineering" },
+      "policy": { "installation": "AVAILABLE" },
+      "category": "Engineering",
+      "version": "1.0.1"
+    },
+    {
+      "name": "productive",
+      "source": { "source": "local", "path": "./skills/productivity" },
+      "policy": { "installation": "AVAILABLE" },
+      "category": "Productivity",
+      "version": "1.0.1"
+    },
+    {
+      "name": "misc",
+      "source": { "source": "local", "path": "./skills/misc" },
+      "policy": { "installation": "AVAILABLE" },
+      "category": "Utilities",
+      "version": "1.0.0"
+    },
+    {
+      "name": "personal",
+      "source": { "source": "local", "path": "./skills/personal" },
+      "policy": { "installation": "AVAILABLE" },
+      "category": "Personal",
+      "version": "1.0.0"
+    }
+  ]
+}

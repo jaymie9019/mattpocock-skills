@@ -1,0 +1,15 @@
+{
+  "name": "personal",
+  "version": "1.0.0",
+  "description": "Skills tied to my own setup — editing articles and managing an Obsidian vault.",
+  "author": {
+    "name": "Matt Pocock",
+    "url": "https://github.com/mattpocock/skills"
+  },
+  "skills": "./",
+  "interface": {
+    "displayName": "Personal",
+    "shortDescription": "Skills tied to my own setup.",
+    "category": "Personal"
+  }
+}

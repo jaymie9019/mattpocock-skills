@@ -58,6 +58,23 @@ claude plugin install personal@mattpocock-skills
 
 Available plugins: `engineering`, `productive`, `misc`, `personal`. After installing `engineering`, run `/setup-matt-pocock-skills` once per repo as described above.
 
+### Option C — OpenAI Codex plugin marketplace
+
+The same repo is also a Codex marketplace (it reuses the exact same skills). Each bucket is a separately installable Codex plugin.
+
+```bash
+# Add the marketplace once
+codex plugin marketplace add mattpocock/skills
+
+# Then install whichever buckets you want
+codex plugin add engineering@mattpocock-skills
+codex plugin add productive@mattpocock-skills
+codex plugin add misc@mattpocock-skills
+codex plugin add personal@mattpocock-skills
+```
+
+Note: the Codex `engineering` plugin ships every skill in the bucket (14), whereas the Claude `engineering` plugin ships a curated 12.
+
 ## Why These Skills Exist
 
 I built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.
