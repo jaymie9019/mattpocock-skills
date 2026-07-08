@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch *)",
+      "Bash(git -c color.ui=false log --oneline 0877403..FETCH_HEAD)",
+      "Bash(git -c color.ui=false diff --stat 6eeb81b HEAD -- 'skills/**/SKILL.md' 'skills/**/*.md' 'skills/**/*.sh')"
+    ]
+  }
+}

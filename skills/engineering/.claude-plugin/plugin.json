@@ -1,7 +1,7 @@
 {
   "name": "engineering",
   "displayName": "Engineering",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Matt Pocock's daily skills for real engineering — grilling, domain modeling, issues, TDD, diagnosis, prototyping.",
   "author": {
     "name": "Matt Pocock"
@@ -24,6 +24,8 @@
     "./domain-modeling",
     "./codebase-design",
     "./implement",
-    "./resolving-merge-conflicts"
+    "./resolving-merge-conflicts",
+    "./code-review",
+    "./research"
   ]
 }

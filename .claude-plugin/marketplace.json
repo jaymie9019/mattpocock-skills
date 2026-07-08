@@ -5,7 +5,7 @@
     "name": "Matt Pocock"
   },
   "description": "Matt Pocock's agent skills for real engineering, organised into installable plugins.",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "plugins": [
     {
       "name": "engineering",
@@ -13,7 +13,7 @@
       "source": "./skills/engineering",
       "description": "Daily skills for real engineering — grilling, domain modeling, issues, TDD, diagnosis, prototyping.",
       "category": "engineering",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "author": { "name": "Matt Pocock" },
       "keywords": ["engineering", "tdd", "issues", "domain-modeling"]
     },
@@ -43,7 +43,7 @@
       "source": "./skills/productivity",
       "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing great skills.",
       "category": "productive",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "author": { "name": "Matt Pocock" },
       "keywords": ["productivity", "workflow", "skills"]
     }
