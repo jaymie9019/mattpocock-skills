@@ -192,6 +192,7 @@ Skills I use daily for code work.
 - **[setup-matt-pocock-skills](./skills/engineering/setup-matt-pocock-skills/SKILL.md)** — Configure this repo for the engineering skills (issue tracker, triage labels, domain doc layout). Run once per repo before using the other engineering skills.
 - **[to-issues](./skills/engineering/to-issues/SKILL.md)** — Break any plan, spec, or PRD into independently-grabbable issues using vertical slices.
 - **[to-prd](./skills/engineering/to-prd/SKILL.md)** — Turn the current conversation into a PRD and publish it to the issue tracker. No interview — just synthesizes what you've already discussed.
+- **[wayfinder](./skills/engineering/wayfinder/SKILL.md)** — Plan a chunk of work too big for one session as a shared map of investigation tickets on your issue tracker, resolved one at a time until the way to the destination is clear. Use it before the main flow when the goal is too foggy to grill into a PRD in one pass.
 - **[implement](./skills/engineering/implement/SKILL.md)** — Implement a piece of work based on a PRD or set of issues.
 
 **Model-invoked**

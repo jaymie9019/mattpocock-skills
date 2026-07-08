@@ -31,6 +31,12 @@ Keep steps 1–3 in **one unbroken context window** — don't compact or clear u
 
 The limit on this is the **[smart zone](https://www.aihero.dev/ai-coding-dictionary/smart-zone)**: the window (~120k tokens on state-of-the-art models) within which the model still reasons sharply. If a session approaches it before `/to-issues`, don't push on degraded — `/handoff` and continue in a fresh thread.
 
+### When the idea is too big to grill in one pass
+
+The main flow assumes step 1's grilling can converge on a plan in one context window — `/to-prd` then just synthesises what you've already discussed. Some efforts are too big and too foggy for that: the decisions block each other, the way to the destination isn't visible yet, and no single session can hold it all.
+
+- **The idea is huge and fogged in** → **`/wayfinder`**. It charts the effort as a **shared map** of investigation tickets on your issue tracker, then resolves them one at a time — each ticket a decision, not a deliverable — until the way is clear. It plans, it doesn't build. When the map is walked and the decisions are settled, you re-enter the main flow at `/grill-with-docs` → `/to-prd` with the fog gone. Skip it when one pass of grilling already converges — if there's no fog, you don't need a map.
+
 ## On-ramps
 
 A starting situation that generates work, then merges onto the main flow.

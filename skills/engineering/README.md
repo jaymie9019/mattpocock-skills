@@ -13,6 +13,7 @@ Reachable only when you type them (`disable-model-invocation: true`).
 - **[setup-matt-pocock-skills](./setup-matt-pocock-skills/SKILL.md)** — Configure this repo for the engineering skills (issue tracker, triage labels, domain doc layout). Run once per repo.
 - **[to-issues](./to-issues/SKILL.md)** — Break any plan, spec, or PRD into independently-grabbable issues using vertical slices.
 - **[to-prd](./to-prd/SKILL.md)** — Turn the current conversation into a PRD and publish it to the issue tracker.
+- **[wayfinder](./wayfinder/SKILL.md)** — Plan a chunk of work too big for one session as a shared map of investigation tickets on your issue tracker, resolved one at a time until the way to the destination is clear.
 - **[implement](./implement/SKILL.md)** — Implement a piece of work based on a PRD or set of issues.
 
 ## Model-invoked
