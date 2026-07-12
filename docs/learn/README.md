@@ -73,7 +73,7 @@
 | writing-great-skills / GLOSSARY 方法论 | `writing-great-skills` | `productivity/` → **productive** plugin |
 | grilling 系列 | `grill-me` `grilling` | productive；`grill-with-docs` 在 **engineering** |
 | handoff / teach | `handoff` `teach` | **productive** plugin |
-| tdd / to-prd / to-issues / prototype / diagnosing / domain-modeling | 同名 skill | **engineering** plugin |
+| tdd / to-prd / to-issues / prototype / diagnosing / domain-modeling | 同名 skill（to-prd、to-issues 已更名为 `to-spec`、`to-tickets`） | **engineering** plugin |
 | loop-me / decision-mapping | `loop-me` `decision-mapping` | `in-progress/`（草稿，**不打包**） |
 
 ## 长期维护

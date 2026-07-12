@@ -12,46 +12,33 @@ npx skills update wayfinder
 
 ## What it does
 
-`wayfinder` plans a chunk of work too big for one agent session — and too fogged in to see the end of — as a **shared map** of investigation tickets on your issue tracker, then resolves them one at a time until the way to the destination is clear.
-
-It **plans, it doesn't build**. Every ticket resolves a *decision*, not a deliverable, and the map is done when nothing is left to decide before someone goes and does the thing. The pull to just start doing the work is the signal you've reached the edge of the map and it's time to hand off to the build flow.
+`wayfinder` takes an effort too big for one agent session — wrapped in fog, where the way from here to the goal isn't visible yet — and charts it as a **shared map** of investigation tickets on your issue tracker, then resolves them one at a time until the way is clear. It **plans, it doesn't do**: every ticket resolves a decision, and the map is done when nothing is left to decide before someone goes and builds the thing — so it produces decisions, not deliverables.
 
 ## When to reach for it
 
 You invoke this by typing `/wayfinder` — the agent won't reach for it on its own.
 
-Reach for it when an effort is both **big** (more than one session can hold) and **foggy** (the decisions block each other, so you can't grill it straight into a plan). If one pass of grilling already converges on a spec, you don't need a map — grill and go straight to [to-prd](https://aihero.dev/skills-to-prd) instead. Wayfinder earns its weight only when there is genuine **fog of war** to clear.
+Reach for it when an effort is **more than one agent session can hold** and the route to its **destination** is still foggy — you can feel the shape of the work but can't yet write it down as a spec or a plan. For turning an *already-clear* thread into a spec, use [to-spec](https://aihero.dev/skills-to-spec); for slicing an already-understood plan into buildable tickets, use [to-tickets](https://aihero.dev/skills-to-tickets). Wayfinder sits upstream of both: it's what you run when there's too much fog to spec directly.
 
 ## Prerequisites
 
-Wayfinder lives on your issue tracker — the map is one issue labelled `wayfinder:map` and its tickets are child issues — so [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills) must have configured the tracker first. The tracker-specific mechanics (how the map, child tickets, blocking edges, and frontier queries are expressed) live in that repo's `docs/agents/issue-tracker.md`; absent it, wayfinder falls back to a local-markdown tracker.
+The map and its tickets live on the repo's issue tracker, so wayfinder needs the tracker wiring that [setup-matt-pocock-skills](https://aihero.dev/skills-setup-matt-pocock-skills) lays down — it seeds a "Wayfinding operations" section describing how the map, child tickets, blocking, and frontier queries are expressed for GitHub, GitLab, or local-markdown. Absent that doc, wayfinder defaults to a local-markdown map.
 
-## Fog of war
+## The map is an index, fog is the frontier
 
-The map is *deliberately* incomplete. Beyond the live tickets lies the **fog of war** — decisions you can tell are coming but can't yet pin down, because they hang on questions still open. You don't chart what you can't see: the fog is written loosely into the map's **Not yet specified** section, and resolving a ticket clears the fog ahead of it, **graduating** whatever's now sharp into fresh tickets — one at a time, until no tickets remain.
+The **map** is a single `wayfinder:map` issue whose tickets are its child issues — one shared URL the whole team can watch. It's an **index, not a store**: each decision lives in exactly one place (its ticket), and the map only gists and links, never restates. A session loads the map at low resolution and zooms into individual tickets on demand.
 
-The test for fog-or-ticket is whether you can *state* the question precisely now — not whether you can *answer* it. Sharp question → ticket, even if it's blocked. Can't phrase it sharply yet → leave it in the fog. Work past the destination isn't fog at all — it's **out of scope**, ruled out and never graduated.
+Beyond the live tickets lies the **fog of war** — decisions you can tell are coming but can't yet pin down. The test for whether something is a ticket or still fog is whether you can *state the question precisely now*, not whether you can answer it. Resolving a ticket clears the fog ahead of it, **graduating** whatever's now specifiable into fresh tickets. The **frontier** is the open, unblocked, unclaimed tickets — the edge of the known — and it's what the tracker's native blocking renders visually, so you see what's takeable without opening the map. Fog only gathers *toward* the **destination**; work past it is ruled **out of scope**, closed, never graduating.
 
-## The map and its tickets
-
-- **The map** is a single index issue: a Destination (what reaching the end looks like), Notes, the Decisions-so-far index, and the Not-yet-specified fog. It gists and links; it never restates a decision, which lives in exactly one place — its ticket.
-- **Tickets** are child issues, each sized to one ~100K-token session and carrying a type: **research** (AFK — read sources, leave a summary), **prototype** (make a rough artifact to react to), **grilling** (the default — one question at a time), or **task** (the one type that *does* rather than decides, and only to unblock a decision).
-- **The frontier** is the open, unblocked, unclaimed tickets — the edge of the known. Blocking uses the tracker's native dependency edges so the frontier renders visually in the tracker's own UI. A session **claims** a ticket by assigning it before any work, so parallel sessions don't collide.
-
-The one hard rule across both modes — charting the map and working through it — is **never resolve more than one ticket per session**.
+Every ticket is **HITL** (human in the loop — grilling, prototype) or **AFK** (agent alone — research); a HITL ticket only resolves through a live exchange, so the agent never answers its own questions.
 
 ## It's working if
 
-- There's a single `wayfinder:map` issue, and the decisions live in the tickets while the map only gists and links them.
-- Tickets are questions to resolve, not tasks to build — and the fog is written down as fog, not pre-sliced into tickets.
-- Each session claims one ticket, resolves it, records the answer back on the map, and stops.
+- Naming the **destination** is the first act — before any ticket exists — because it fixes the scope every ticket is measured against.
+- One map is one `wayfinder:map` issue; tickets are its child issues, referred to by **name**, never a bare `#42`.
+- A session resolves **at most one ticket**, records the answer as a resolution comment, closes the ticket, and appends a one-line pointer to *Decisions so far*.
+- If the opening grill surfaces **no fog**, it stops and tells you the journey is small enough to skip the map.
 
 ## Where it fits
 
-Wayfinder is a **precursor to the main build chain** — it runs *before* it, not inside it:
-
-```txt
-wayfinder  →  grill-with-docs → to-prd → to-issues → implement → code-review
-```
-
-It exists for the case the main flow assumes away: that step-1 grilling can converge in one context window. When it can't, wayfinder charts the fog into a shared map and clears it decision by decision; once the way is clear you re-enter at [grill-with-docs](https://aihero.dev/skills-grill-with-docs) and [to-prd](https://aihero.dev/skills-to-prd) with the plan in hand. Its nearest sibling is [to-issues](https://aihero.dev/skills-to-issues), which also splits work onto the tracker — but to-issues cuts a *settled* plan into buildable vertical slices, whereas wayfinder cuts an *unsettled* problem into decisions to make. When you're unsure which skill or flow fits, [ask-matt](https://aihero.dev/skills-ask-matt) routes you.
+`wayfinder` is a big-idea **on-ramp**: an effort too large and foggy to spec in one sitting generates a cleared map of decisions, which then merges onto the main build flow. When the fog is pushed back and the way is clear, hand off to [to-spec](https://aihero.dev/skills-to-spec) to schedule the multi-session build (or, if the effort turned out small, implement directly). It leans on [grilling](https://aihero.dev/skills-grilling) and [domain-modeling](https://aihero.dev/skills-domain-modeling) to resolve individual tickets, and on [prototype](https://aihero.dev/skills-prototype) and [research](https://aihero.dev/skills-research) for the ticket types that need them. When you're unsure which skill or flow fits, [ask-matt](https://aihero.dev/skills-ask-matt) routes you.
