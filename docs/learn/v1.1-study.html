@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mattpocock/skills v1.1 学习笔记</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e4e1dc;
+    --accent: #b05730;
+    --accent-soft: #f6e8e0;
+    --blue: #2f6b8f;
+    --blue-soft: #e3eef4;
+    --green: #3d7a4f;
+    --green-soft: #e5f0e8;
+    --purple: #6b5b95;
+    --purple-soft: #ebe7f3;
+    --code-bg: #f0eeea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #191817;
+      --surface: #211f1e;
+      --text: #e8e6e3;
+      --muted: #a09a92;
+      --border: #38342f;
+      --accent: #e08a5c;
+      --accent-soft: #3a2a20;
+      --blue: #7fb3d3;
+      --blue-soft: #1f2f3a;
+      --green: #8fc79f;
+      --green-soft: #21301f;
+      --purple: #b0a3d4;
+      --purple-soft: #2c2738;
+      --code-bg: #2a2725;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.75;
+    padding: 2rem 1rem 5rem;
+  }
+  main { max-width: 880px; margin: 0 auto; }
+  h1 { font-size: 1.9rem; line-height: 1.3; margin-bottom: .4rem; }
+  h2 {
+    font-size: 1.4rem; margin: 3rem 0 1rem;
+    padding-bottom: .4rem; border-bottom: 2px solid var(--border);
+  }
+  h3 { font-size: 1.1rem; margin: 1.6rem 0 .6rem; }
+  p { margin-bottom: .9rem; }
+  .subtitle { color: var(--muted); margin-bottom: 2rem; }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .88em;
+    background: var(--code-bg);
+    padding: .12em .4em;
+    border-radius: 4px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .card h3 { margin-top: 0; }
+  .tag {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    padding: .1em .6em;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin-left: .5em;
+  }
+  .tag.major { background: var(--accent-soft); color: var(--accent); }
+  .tag.minor { background: var(--blue-soft); color: var(--blue); }
+  .tag.new { background: var(--green-soft); color: var(--green); }
+  .tag.wip { background: var(--purple-soft); color: var(--purple); }
+  ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+  li { margin-bottom: .45rem; }
+  .flow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+  .flow-line {
+    display: flex; align-items: center; gap: .5rem;
+    flex-wrap: nowrap; white-space: nowrap;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: .85rem;
+    margin-bottom: .6rem;
+  }
+  .step {
+    background: var(--blue-soft); color: var(--blue);
+    border: 1px solid transparent;
+    padding: .3em .7em; border-radius: 6px; font-weight: 600;
+  }
+  .step.hot { background: var(--accent-soft); color: var(--accent); }
+  .step.plain { background: var(--code-bg); color: var(--muted); font-weight: 400; }
+  .arrow { color: var(--muted); }
+  .note { color: var(--muted); font-size: .88rem; }
+  table {
+    width: 100%; border-collapse: collapse; font-size: .92rem;
+    background: var(--surface); border-radius: 10px; overflow: hidden;
+  }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 1rem; }
+  th, td { padding: .6rem .9rem; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: var(--code-bg); font-size: .82rem; letter-spacing: .03em; }
+  tr:last-child td { border-bottom: none; }
+  .rename { text-decoration: line-through; color: var(--muted); }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: .3rem 1rem; margin: 1rem 0;
+    color: var(--muted); background: var(--surface);
+    border-radius: 0 8px 8px 0;
+  }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+  .toc { font-size: .92rem; }
+  .toc a { color: var(--blue); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>mattpocock/skills v1.1 学习笔记</h1>
+<p class="subtitle">2026-07 合并上游 22 个 commit 后的变更总结与最新用法 · 基于 CHANGELOG 1.1.0 与各 SKILL.md 原文整理</p>
+
+<div class="card toc">
+  <strong>目录</strong>
+  <ol>
+    <li><a href="#big-picture">一句话总览：v1.1 改了什么</a></li>
+    <li><a href="#renames">改名对照表（先记住这个）</a></li>
+    <li><a href="#main-flow">最新主流程：idea → ship</a></li>
+    <li><a href="#changes">逐项变更详解</a></li>
+    <li><a href="#cheatsheet">场景速查表</a></li>
+    <li><a href="#hygiene">Context 卫生守则</a></li>
+  </ol>
+</div>
+
+<h2 id="big-picture">1. 一句话总览</h2>
+<p>v1.1 做了三件大事：<strong>统一规划链</strong>（<code>/to-spec</code> + <code>/to-tickets</code> 取代 to-prd / to-plan / to-issues 三个 skill）、<strong>wayfinder 转正</strong>（decision-mapping 更名重构后从 in-progress 毕业，定位为"超大工作量"的 situational on-ramp）、<strong>code-review 转正</strong>（带上 Fowler smell 基线进入主流程收尾）。周边还有 grilling / tdd / prototype 的行为收紧和新的 <code>/research</code> skill。</p>
+
+<h2 id="renames">2. 改名对照表</h2>
+<div class="table-wrap"><table>
+  <tr><th>旧名</th><th>新名</th><th>变化实质</th></tr>
+  <tr>
+    <td><span class="rename">/to-prd</span></td>
+    <td><code>/to-spec</code></td>
+    <td>纯改名，"spec" 成为贯穿全套的统一术语（文档开头仍提 "you may know this as a PRD"）。产物文件也从 <code>PRD.md</code> 改为 <code>spec.md</code>。</td>
+  </tr>
+  <tr>
+    <td><span class="rename">/to-issues</span> + <span class="rename">/to-plan</span></td>
+    <td><code>/to-tickets</code></td>
+    <td>两个 skill 合并为一个：把 spec 切成 <strong>tracer-bullet tickets</strong>，每张 ticket 声明自己的 <strong>blocking edges</strong>。同一份产物在 local tracker 是"一 ticket 一文件"，在真 tracker 是 native blocking links。</td>
+  </tr>
+  <tr>
+    <td><span class="rename">decision-mapping</span></td>
+    <td><code>/wayfinder</code></td>
+    <td>更名 + 全面重构（fog of war / frontier / destination 的隐喻体系），从 in-progress 毕业进 engineering。</td>
+  </tr>
+  <tr>
+    <td><span class="rename">review</span>（in-progress）</td>
+    <td><code>/code-review</code></td>
+    <td>转正进 engineering，Standards 轴新增常驻的 Fowler smell 基线。</td>
+  </tr>
+</table></div>
+
+<h2 id="main-flow">3. 最新主流程：idea → ship</h2>
+
+<div class="flow">
+  <div class="flow-line">
+    <span class="step plain">idea</span><span class="arrow">→</span>
+    <span class="step">/grill-with-docs</span><span class="arrow">→</span>
+    <span class="step hot">/to-spec</span><span class="arrow">→</span>
+    <span class="step hot">/to-tickets</span><span class="arrow">→</span>
+    <span class="step">/implement</span><span class="arrow">×N</span><span class="arrow">→</span>
+    <span class="step plain">ship</span>
+  </div>
+  <div class="flow-line">
+    <span class="step plain">detour:</span>
+    <span class="step">/handoff</span><span class="arrow">→</span>
+    <span class="step">/prototype</span><span class="arrow">→</span>
+    <span class="step">/handoff</span>
+    <span class="note">（问题需要可运行的答案时，从 step 2 岔出去再回来）</span>
+  </div>
+  <div class="flow-line">
+    <span class="step plain">/implement 内部:</span>
+    <span class="step">/tdd</span><span class="arrow">（red → green，逐 slice）</span><span class="arrow">→</span>
+    <span class="step">/code-review</span><span class="arrow">→</span>
+    <span class="step plain">commit</span>
+  </div>
+</div>
+
+<ol>
+  <li><strong><code>/grill-with-docs</code></strong> — 有 codebase 时的起点：被拷问式访谈把想法磨尖，沉淀进 <code>CONTEXT.md</code> 和 ADR。没有 codebase 用 <code>/grill-me</code>（无状态版）。</li>
+  <li><strong>分支：问题能全靠对话敲定吗？</strong> 需要"跑起来才知道"的答案（状态模型、业务逻辑、UI 长相）→ 用 <code>/handoff</code> 岔出去开 <code>/prototype</code> 新会话，答案再 handoff 回来。</li>
+  <li><strong>分支：是多 session 的活吗？</strong>
+    <ul>
+      <li><strong>是</strong> → <code>/to-spec</code> 把对话综合成 spec（不再访谈，只综合），然后 <code>/to-tickets</code> 切成带 blocking edges 的 tickets → 每张 ticket 单独开 fresh context 跑 <code>/implement</code>。</li>
+      <li><strong>否</strong> → 同一个 context window 里直接 <code>/implement</code>。</li>
+    </ul>
+  </li>
+  <li><strong><code>/implement</code></strong> 内部在事先约定的 seam 上驱动 <code>/tdd</code>（一次一个 red-green slice），收尾跑 <code>/code-review</code> 再 commit。</li>
+</ol>
+
+<h3>三个 on-ramp（从别的起点汇入主流程）</h3>
+<div class="grid2">
+  <div class="card">
+    <h3><code>/triage</code></h3>
+    <p>bug 报告、外部需求堆积时用。按角色状态机把 raw issue 变成 agent-ready issue。<strong>只 triage 你没创建的 issue</strong> —— <code>/to-tickets</code> 产出的 tickets 天生 agent-ready，别再过 triage。v1.1 起也能 triage 外部 PR。</p>
+  </div>
+  <div class="card">
+    <h3><code>/diagnosing-bugs</code></h3>
+    <p>东西坏了、难查的 bug、偶发 flake。先建立<strong>紧反馈环</strong>（一条命令能在这个 bug 上变红）才允许推理，修复必带回归测试。post-mortem 发现"没有好 seam 锁住 bug"时交棒 <code>/improve-codebase-architecture</code>。</p>
+  </div>
+  <div class="card">
+    <h3><code>/wayfinder</code></h3>
+    <p>超大且迷雾重重的工程 —— greenfield 项目、一个 session 装不下的大 feature。在 issue tracker 上铺一张调查 tickets 的<strong>共享地图</strong>，一次解决一张，直到迷雾散尽，再汇入 <code>/to-spec</code>。</p>
+  </div>
+</div>
+
+<h2 id="changes">4. 逐项变更详解</h2>
+
+<div class="card">
+  <h3>规划链统一：<code>/to-spec</code> + <code>/to-tickets</code><span class="tag minor">minor</span></h3>
+  <p><strong><code>/to-spec</code></strong>：把当前对话综合成 spec 并发布到 issue tracker。三步：探索 repo（用 domain glossary 词汇、尊重 ADR）→ <strong>先和你确认测试 seam</strong>（优先复用既有 seam，越少越高越好，理想是 1 个）→ 按模板写 spec（Problem / Solution / 大量 User Stories / Implementation Decisions / Testing Decisions / Out of Scope），打 <code>ready-for-agent</code> 标签。</p>
+  <p><strong><code>/to-tickets</code></strong>：把 spec / 对话切成 <strong>tracer-bullet 垂直切片</strong>，每片纵穿所有层（schema、API、UI、tests），单独可 demo，尺寸恰好一个 fresh context window。每张 ticket 声明 <strong>blocking edges</strong>，先给你过目（粒度对吗？依赖边对吗？）再发布：</p>
+  <ul>
+    <li><strong>local tracker</strong> → 一 ticket 一文件：<code>.scratch/&lt;feature&gt;/issues/&lt;NN&gt;-&lt;slug&gt;.md</code>，依赖顺序编号，手工自上而下做。</li>
+    <li><strong>真 tracker</strong>（GitHub / Linear…）→ 一 ticket 一 issue，优先用平台原生的 sub-issue / blocking 关系，于是"<strong>frontier</strong>（所有 blocker 已完成的 ticket）"可以多个 agent 并行抢。</li>
+  </ul>
+  <p><strong>Wide refactor 例外</strong>：一个机械改动（改列名、改共享类型）blast radius 波及全库时，垂直切片切不绿 —— 改用 <strong>expand–contract</strong>：先 expand（新旧并存）→ 按 blast radius 分批 migrate（每批一张 ticket，都被 expand block）→ 最后 contract（删旧形态，被所有 migrate 批 block），CI 逐批保绿。</p>
+</div>
+
+<div class="card">
+  <h3><code>/wayfinder</code> 毕业 + 重构<span class="tag minor">minor</span></h3>
+  <p>核心隐喻：向 <strong>destination</strong>（目的地）寻路。<strong>它规划、不动手</strong> —— 每张 ticket 解决一个<em>决策</em>而非交付物，地图完成的标志是"动手之前没有任何事待决定"。</p>
+  <ul>
+    <li><strong>地图是索引不是仓库</strong>：一个 <code>wayfinder:map</code> issue，tickets 是它的 child issues，全队共享一个 URL。决策只存在于它自己的 ticket 里，地图只做摘要和链接。</li>
+    <li><strong>Fog of war</strong>：能<em>精确说出问题</em>（不必能回答）→ 建 ticket；说不清 → 留在 <code>## Not yet specified</code> 迷雾区，随前沿推进逐步"毕业"成新 ticket。超出目的地的工作是 <code>## Out of scope</code>，永不毕业。</li>
+    <li><strong>四种 ticket 类型</strong>：grilling（默认，一次一问）、prototype、research、task（唯一"做事"的类型，只为解锁某个决策）。</li>
+    <li><strong>HITL / AFK 分类</strong>：grilling、prototype 是 HITL（human in the loop），只能通过和人的实时交流 resolve —— 这修掉了"wayfinder 自己拷问自己"的老毛病；research 是 AFK。</li>
+    <li><strong>认领即 assign</strong>：session 干活前先把 ticket assign 给驱动的 dev，防止并行 session 相撞。铁律：<strong>一个 session 最多 resolve 一张 ticket</strong>。</li>
+    <li><strong>无雾早退</strong>：开场 grilling 没发现迷雾 → 直接停，告诉你这活一个 session 就够，不建没人需要的地图。</li>
+    <li><strong>定位</strong>：situational on-ramp，不是新的主入口 —— grill 主导的 idea → ship 仍是正门。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3><code>/code-review</code> 转正 + Fowler smell 基线<span class="tag minor">minor</span></h3>
+  <p>两轴并行 sub-agent review：<strong>Standards</strong>（符合本 repo 成文规范吗？）+ <strong>Spec</strong>（忠实实现了源头 issue / spec 吗？）。Standards 轴新增常驻基线：约 12 个高信号的 Fowler "Bad Smells in Code"（Mysterious Name、Duplicated Code、Feature Envy、Data Clumps、Primitive Obsession、Repeated Switches、Shotgun Surgery、Divergent Change、Speculative Generality、Message Chains、Middle Man、Refused Bequest）。两条安全规则：repo 成文规范<strong>覆盖</strong>基线；smell 只作为 judgement call 报告，从不算硬违规。</p>
+</div>
+
+<div class="card">
+  <h3><code>/grilling</code> 收紧<span class="tag minor">minor</span></h3>
+  <ul>
+    <li><strong>确认门</strong>：你确认"达成共同理解"之前，agent 不许动手执行计划。</li>
+    <li><strong>facts vs decisions</strong>：事实自己查（探索 codebase），<strong>决策必须交给人并等待回答</strong>。防止 grilling 被别的 skill 内嵌调用时抢答自己的问题。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3><code>/tdd</code> 瘦身为 reference-only<span class="tag minor">patch</span></h3>
+  <ul>
+    <li>删掉逐步 Workflow —— red → green 循环模型本来就会。<strong>refactor 阶段被移除</strong>：重构归属 review 阶段（<code>/code-review</code>）。</li>
+    <li><strong>seam</strong> 成为测试落点的关键词：只在<strong>事先与你确认过的 seam</strong> 上写测试。</li>
+    <li>新反模式：<strong>tautological test</strong> —— 断言用和实现同样的方式重新算出来，构造上必过、零信心。期望值必须来自独立的 source of truth。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3><code>/prototype</code>：model-invoked + primary source<span class="tag minor">minor</span></h3>
+  <p>agent 现在可以自主够到它（其他 skill 也可以）。新观念：<strong>prototype 是 primary source</strong> —— 回答完设计问题后不再删掉，而是作为可运行证据留在 main 之外的 <code>prototype/&lt;name&gt;</code> 分支上，实现 issue 上留 context 指针。main 只保留验证过的决策，探索过程可回溯。</p>
+</div>
+
+<div class="card">
+  <h3><code>/research</code><span class="tag new">新 skill</span></h3>
+  <p>把"读资料的腿脚活"外包给<strong>后台 agent</strong>：它对照 primary sources（官方文档、源码、spec、第一方 API）调查一个问题，在 repo 里留下一份带引用的 Markdown。你继续干活，回头拿文档来 grill / 规划 / 设计 —— research 喂养思考，不替代思考。</p>
+</div>
+
+<div class="card">
+  <h3>其余更新</h3>
+  <ul>
+    <li><strong><code>/ask-matt</code> 路由补全</strong>：新增 "Something's broken" on-ramp（diagnosing-bugs）、"Vocabulary underneath" 区（domain-modeling + codebase-design），tdd 织入主流程。迷路时问它就对了。</li>
+    <li><strong><code>/triage</code> 支持外部 PR</strong>：PR 被当作"带代码的 issue"走同一套角色状态机（按 repo 开关启用）；已实现的请求直接 resolve 为 wontfix。</li>
+    <li><strong><code>/setup-matt-pocock-skills</code> 更友好</strong>：triage labels 只在装了 triage 时才问且默认推荐 yes；domain docs 默认单 context（除非 monorepo 信号）;local tickets 与 to-tickets 对齐为一文件一 ticket。</li>
+    <li><strong><code>/writing-great-skills</code> 新增两个 failure mode</strong>：<em>Negation</em>（大象效应 —— 说"别做 X"反而把 X 拽进上下文，要写正向指令）与 <em>Negative Space</em>（留白盲区 —— 每个没写的决定都被默默委托给模型先验，要主动审视草稿的沉默处）。</li>
+    <li><strong><code>setup-ts-deep-modules</code></strong><span class="tag wip">in-progress</span>：给 TypeScript repo 装 dependency-cruiser，强制每个 package 成为 deep module（实现藏在子目录，只能从 entry-point 文件进入）。草稿阶段，未打包。</li>
+  </ul>
+</div>
+
+<h2 id="cheatsheet">5. 场景速查表</h2>
+<div class="table-wrap"><table>
+  <tr><th>你的处境</th><th>用什么</th></tr>
+  <tr><td>不知道该用哪个 skill</td><td><code>/ask-matt</code></td></tr>
+  <tr><td>首次在 repo 里用这套 skill</td><td><code>/setup-matt-pocock-skills</code>（配置 tracker、标签、文档布局）</td></tr>
+  <tr><td>有想法 + 有 codebase</td><td><code>/grill-with-docs</code> 开始主流程</td></tr>
+  <tr><td>有想法，没 codebase</td><td><code>/grill-me</code>（无状态拷问）</td></tr>
+  <tr><td>想法磨清楚了，要落成文档</td><td><code>/to-spec</code>（只综合，不访谈）</td></tr>
+  <tr><td>spec 要切成可并行的活</td><td><code>/to-tickets</code>（tracer bullets + blocking edges）</td></tr>
+  <tr><td>拿一张 ticket 开干</td><td>fresh context + <code>/implement</code>（内部驱动 <code>/tdd</code>，收尾 <code>/code-review</code>）</td></tr>
+  <tr><td>设计问题纸上谈不拢</td><td><code>/prototype</code>（答案留 issue，代码留 <code>prototype/&lt;name&gt;</code> 分支）</td></tr>
+  <tr><td>要查资料但不想中断手头工作</td><td><code>/research</code>（后台 agent 产出带引用的 Markdown）</td></tr>
+  <tr><td>工程太大太迷雾，一个 session 装不下</td><td><code>/wayfinder</code> → 雾散后接 <code>/to-spec</code></td></tr>
+  <tr><td>外部 bug / 需求 / PR 堆积</td><td><code>/triage</code></td></tr>
+  <tr><td>难查的 bug、偶发 flake</td><td><code>/diagnosing-bugs</code></td></tr>
+  <tr><td>review 一个分支 / PR</td><td><code>/code-review</code>（Standards + Spec 两轴）</td></tr>
+  <tr><td>闲时给 codebase 做保养</td><td><code>/improve-codebase-architecture</code></td></tr>
+  <tr><td>术语混乱（"account" 身兼三职）</td><td><code>/domain-modeling</code></td></tr>
+  <tr><td>设计模块形状 / seam 该放哪</td><td><code>/codebase-design</code></td></tr>
+  <tr><td>上下文快满 / 要分叉到新会话</td><td><code>/handoff</code>（分叉）vs <code>/compact</code>（原地续）</td></tr>
+</table></div>
+
+<h2 id="hygiene">6. Context 卫生守则</h2>
+<blockquote>这套 skill 的隐藏主线是 context window 管理 —— 每个环节都在回答"这段思考应该活在哪个 window 里"。</blockquote>
+<ul>
+  <li><strong>grilling → to-spec → to-tickets 保持一个不间断的 context window</strong>，中途别 compact 别 clear —— 拷问、spec、切票要建立在同一段思考上。</li>
+  <li>上限是 <strong>smart zone</strong>（约 120k tokens，模型仍能敏锐推理的窗口）。切票前就逼近了？别硬撑降智 —— <code>/handoff</code> 换新线程继续。</li>
+  <li><strong>每张 ticket 的 <code>/implement</code> 都从 fresh context 开始</strong>，做完一张清一次上下文。</li>
+  <li><code>/handoff</code> 是分叉（压缩成 markdown 文件，新会话引用它）；<code>/compact</code> 是原地续命（只在阶段间歇用，别在阶段中途 compact）。</li>
+  <li>wayfinder 铁律同源：<strong>一个 session 只 resolve 一张 ticket</strong> —— session 就是 context window。</li>
+</ul>
+
+<p class="note" style="margin-top:3rem">整理自 mattpocock/skills CHANGELOG 1.1.0、各 SKILL.md 与 2026-07 合并的 22 个上游 commit。本页随 v1.1 生成，后续版本更新后需重新核对。</p>
+
+</main>
+</body>
+</html>
