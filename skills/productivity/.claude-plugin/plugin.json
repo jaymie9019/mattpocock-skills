@@ -1,7 +1,7 @@
 {
   "name": "productive",
   "displayName": "Productive",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing great skills.",
   "author": {
     "name": "Matt Pocock"
@@ -9,7 +9,13 @@
   "homepage": "https://github.com/mattpocock/skills",
   "repository": "https://github.com/mattpocock/skills",
   "license": "MIT",
-  "keywords": ["productivity", "workflow", "grilling", "handoff", "skills"],
+  "keywords": [
+    "productivity",
+    "workflow",
+    "grilling",
+    "handoff",
+    "skills"
+  ],
   "skills": [
     "./grill-me",
     "./grilling",

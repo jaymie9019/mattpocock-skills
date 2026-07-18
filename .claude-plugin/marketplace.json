@@ -5,7 +5,7 @@
     "name": "Matt Pocock"
   },
   "description": "Matt Pocock's agent skills for real engineering, organised into installable plugins.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "plugins": [
     {
       "name": "engineering",
@@ -13,9 +13,16 @@
       "source": "./skills/engineering",
       "description": "Daily skills for real engineering — grilling, domain modeling, tickets, TDD, diagnosis, prototyping.",
       "category": "engineering",
-      "version": "1.3.0",
-      "author": { "name": "Matt Pocock" },
-      "keywords": ["engineering", "tdd", "tickets", "domain-modeling"]
+      "version": "1.4.0",
+      "author": {
+        "name": "Matt Pocock"
+      },
+      "keywords": [
+        "engineering",
+        "tdd",
+        "tickets",
+        "domain-modeling"
+      ]
     },
     {
       "name": "misc",
@@ -23,9 +30,15 @@
       "source": "./skills/misc",
       "description": "Tools kept around but rarely used — git guardrails, shoehorn migration, exercise scaffolding, pre-commit setup.",
       "category": "misc",
-      "version": "1.0.0",
-      "author": { "name": "Matt Pocock" },
-      "keywords": ["misc", "git", "pre-commit"]
+      "version": "1.1.0",
+      "author": {
+        "name": "Matt Pocock"
+      },
+      "keywords": [
+        "misc",
+        "git",
+        "pre-commit"
+      ]
     },
     {
       "name": "personal",
@@ -33,9 +46,15 @@
       "source": "./skills/personal",
       "description": "Skills tied to my own setup — editing articles and managing an Obsidian vault.",
       "category": "personal",
-      "version": "1.0.0",
-      "author": { "name": "Matt Pocock" },
-      "keywords": ["personal", "writing", "obsidian"]
+      "version": "1.1.0",
+      "author": {
+        "name": "Matt Pocock"
+      },
+      "keywords": [
+        "personal",
+        "writing",
+        "obsidian"
+      ]
     },
     {
       "name": "productive",
@@ -43,9 +62,15 @@
       "source": "./skills/productivity",
       "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing great skills.",
       "category": "productive",
-      "version": "1.0.3",
-      "author": { "name": "Matt Pocock" },
-      "keywords": ["productivity", "workflow", "skills"]
+      "version": "1.1.0",
+      "author": {
+        "name": "Matt Pocock"
+      },
+      "keywords": [
+        "productivity",
+        "workflow",
+        "skills"
+      ]
     }
   ]
 }
