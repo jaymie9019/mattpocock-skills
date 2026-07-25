@@ -60,7 +60,7 @@
       "name": "productive",
       "displayName": "Productive",
       "source": "./skills/productivity",
-      "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing great skills.",
+      "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing for agents.",
       "category": "productive",
       "version": "1.2.0",
       "author": {

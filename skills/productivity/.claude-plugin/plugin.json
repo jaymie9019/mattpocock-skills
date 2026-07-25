@@ -2,7 +2,7 @@
   "name": "productive",
   "displayName": "Productive",
   "version": "1.2.0",
-  "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing great skills.",
+  "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing for agents.",
   "author": {
     "name": "Matt Pocock"
   },
@@ -23,6 +23,6 @@
     "./handoff",
     "./teach",
     "./to-questionnaire",
-    "./writing-great-skills"
+    "./writing-for-agents"
   ]
 }
