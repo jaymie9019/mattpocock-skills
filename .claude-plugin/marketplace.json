@@ -62,7 +62,7 @@
       "source": "./skills/productivity",
       "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing for agents.",
       "category": "productive",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "author": {
         "name": "Matt Pocock"
       },
