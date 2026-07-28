@@ -13,7 +13,7 @@
       "source": "./skills/engineering",
       "description": "Daily skills for real engineering — grilling, domain modeling, tickets, TDD, diagnosis, prototyping.",
       "category": "engineering",
-      "version": "1.5.0",
+      "version": "1.5.1",
       "author": {
         "name": "Matt Pocock"
       },
@@ -60,9 +60,9 @@
       "name": "productive",
       "displayName": "Productive",
       "source": "./skills/productivity",
-      "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing for agents.",
+      "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing great skills.",
       "category": "productive",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "author": {
         "name": "Matt Pocock"
       },
