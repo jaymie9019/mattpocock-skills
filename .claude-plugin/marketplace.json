@@ -5,7 +5,7 @@
     "name": "Matt Pocock"
   },
   "description": "Matt Pocock's agent skills for real engineering, organised into installable plugins.",
-  "version": "1.5.0",
+  "version": "1.2.2",
   "plugins": [
     {
       "name": "engineering",
@@ -13,7 +13,7 @@
       "source": "./skills/engineering",
       "description": "Daily skills for real engineering — grilling, domain modeling, tickets, TDD, diagnosis, prototyping.",
       "category": "engineering",
-      "version": "1.5.2",
+      "version": "1.2.2",
       "author": {
         "name": "Matt Pocock"
       },
@@ -30,7 +30,7 @@
       "source": "./skills/misc",
       "description": "Tools kept around but rarely used — git guardrails, shoehorn migration, exercise scaffolding, pre-commit setup.",
       "category": "misc",
-      "version": "1.1.0",
+      "version": "1.2.2",
       "author": {
         "name": "Matt Pocock"
       },
@@ -41,28 +41,12 @@
       ]
     },
     {
-      "name": "personal",
-      "displayName": "Personal",
-      "source": "./skills/personal",
-      "description": "Skills tied to my own setup — editing articles and managing an Obsidian vault.",
-      "category": "personal",
-      "version": "1.1.0",
-      "author": {
-        "name": "Matt Pocock"
-      },
-      "keywords": [
-        "personal",
-        "writing",
-        "obsidian"
-      ]
-    },
-    {
       "name": "productive",
       "displayName": "Productive",
       "source": "./skills/productivity",
-      "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing great skills.",
+      "description": "Daily non-code workflow tools — grilling, handoff, teaching, and writing for agents.",
       "category": "productive",
-      "version": "1.6.0",
+      "version": "1.2.2",
       "author": {
         "name": "Matt Pocock"
       },
